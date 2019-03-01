@@ -9,6 +9,9 @@ import { observer } from 'mobx-react';
 // mobx store
 import appStore from '../../stores/AppStore';
 
+// CourseCard
+import CourseCard from '../../components/CourseCard';
+
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
@@ -37,6 +40,7 @@ export default class Home extends Component {
         <DatePicker onChange={this.onDateChange} />
         <Input placeholder="Date from Mobx" value={appStore.today} />
         <Input placeholder="Next day" value={appStore.tomorrow} />
+        <div style={styles.cardContainer}><CourseCard /></div>
         <Header />
         <IntroBanner />
         <AblityItems />
@@ -53,5 +57,8 @@ const styles = {
   container: {
     width: '100%',
     minWidth: '1280px',
+  },
+  cardContainer: {
+    width: '350px',
   },
 };

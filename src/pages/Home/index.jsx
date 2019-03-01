@@ -12,6 +12,8 @@ import appStore from '../../stores/AppStore';
 // CourseCard
 import CourseCard from '../../components/CourseCard';
 
+import moment from 'moment';
+
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 
@@ -34,13 +36,17 @@ export default class Home extends Component {
     appStore.selectDate(date);
   }
 
+  onCardClick() {
+    appStore.selectDate(moment());
+  }
+
   render() {
     return (
       <div style={styles.container}>
         <DatePicker onChange={this.onDateChange} />
         <Input placeholder="Date from Mobx" value={appStore.today} />
         <Input placeholder="Next day" value={appStore.tomorrow} />
-        <div style={styles.cardContainer}><CourseCard /></div>
+        <div style={styles.cardContainer}><CourseCard onClick={this.onCardClick} /></div>
         <Header />
         <IntroBanner />
         <AblityItems />
